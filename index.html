@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>スカイライン・テクノロジーズ | 空の高さから、ビジネスを見渡す</title>
+<meta name="description" content="スカイライン・テクノロジーズは、クラウド、AI、モバイルアプリの開発で企業の成長を支えるソフトウェア開発会社です(架空の会社です)。">
+<style>
+  :root {
+    --bg: #0b1220;
+    --bg-alt: #101a2e;
+    --card: #15213b;
+    --text: #e8eefc;
+    --muted: #9fb0d1;
+    --accent: #4cc2ff;
+    --accent-2: #7b8cff;
+    --line: rgba(255,255,255,.1);
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(11,18,32,.85); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .02em; }
+  .logo svg { width: 28px; height: 28px; }
+  nav ul { display: flex; gap: 24px; list-style: none; font-size: 14px; color: var(--muted); }
+  nav a:hover { color: var(--text); }
+  .btn {
+    display: inline-block; padding: 12px 26px; border-radius: 999px; font-weight: 700; font-size: 15px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #06101f;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(76,194,255,.3); }
+  .btn.ghost { background: transparent; color: var(--text); border: 1px solid var(--line); }
+  .btn.ghost:hover { box-shadow: none; border-color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    position: relative; overflow: hidden; padding: 120px 0 160px; text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, #1b3568 0%, var(--bg) 65%);
+  }
+  .hero .eyebrow { color: var(--accent); font-size: 13px; letter-spacing: .25em; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(30px, 6vw, 58px); line-height: 1.35; font-weight: 800; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { max-width: 620px; margin: 24px auto 40px; color: var(--muted); }
+  .hero .cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .skyline {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 120px; opacity: .55;
+  }
+
+  /* Sections */
+  section { padding: 96px 0; }
+  section.alt { background: var(--bg-alt); }
+  .sec-head { text-align: center; margin-bottom: 56px; }
+  .sec-head small { color: var(--accent); letter-spacing: .25em; font-size: 12px; }
+  .sec-head h2 { font-size: clamp(24px, 4vw, 34px); margin-top: 8px; }
+
+  .grid { display: grid; gap: 24px; }
+  .grid.c3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 32px 28px; transition: transform .25s, border-color .25s;
+  }
+  .card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .card .icon {
+    width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 18px;
+    background: linear-gradient(135deg, rgba(76,194,255,.2), rgba(123,140,255,.2)); font-size: 22px;
+  }
+  .card h3 { font-size: 18px; margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 14.5px; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; text-align: center; }
+  .stats b { display: block; font-size: 44px; line-height: 1.2; color: var(--accent); }
+  .stats span { color: var(--muted); font-size: 14px; }
+
+  /* Works */
+  .work { overflow: hidden; padding: 0; }
+  .work .thumb { height: 150px; }
+  .work .body { padding: 24px 28px 28px; }
+  .tag { display: inline-block; font-size: 12px; color: var(--accent); border: 1px solid var(--line); border-radius: 999px; padding: 0 12px; margin-bottom: 10px; }
+  .t1 { background: linear-gradient(135deg, #1f6fd1, #4cc2ff); }
+  .t2 { background: linear-gradient(135deg, #5b3fd6, #b07bff); }
+  .t3 { background: linear-gradient(135deg, #0f9d8a, #6be3b4); }
+
+  /* News bar */
+  .news-bar { background: var(--bg-alt); border-bottom: 1px solid var(--line); font-size: 14px; }
+  .news-bar .wrap { display: flex; align-items: center; gap: 16px; padding-top: 10px; padding-bottom: 10px; }
+  .news-bar .label { flex: none; font-weight: 700; font-size: 12px; letter-spacing: .15em; color: #06101f; background: var(--accent); border-radius: 999px; padding: 0 14px; }
+  .news-bar ul { list-style: none; flex: 1; min-width: 0; display: grid; }
+  .news-bar li { grid-area: 1 / 1; display: flex; align-items: baseline; gap: 12px; min-width: 0; opacity: 0; transition: opacity .5s; pointer-events: none; }
+  .news-bar li.on { opacity: 1; pointer-events: auto; }
+  .news-bar time { flex: none; color: var(--muted); }
+  .news-bar a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .news-bar a:hover { color: var(--accent); }
+  @media (max-width: 760px) { .news-bar time { display: none; } }
+
+  /* About / company */
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .about p { color: var(--muted); margin-bottom: 16px; }
+  dl.info { border-top: 1px solid var(--line); }
+  dl.info div { display: grid; grid-template-columns: 110px 1fr; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+  dl.info dt { color: var(--muted); }
+
+  /* Contact */
+  .contact { text-align: center; background: linear-gradient(135deg, #12306a, #2a2f7a); border-radius: 24px; padding: 64px 24px; }
+  .contact h2 { font-size: clamp(22px, 4vw, 32px); margin-bottom: 12px; }
+  .contact p { color: #c6d3f0; margin-bottom: 28px; }
+
+  footer { padding: 40px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; text-align: center; }
+  footer .note { margin-top: 6px; font-size: 12px; opacity: .7; }
+
+  @media (max-width: 760px) {
+    nav ul { display: none; }
+    .about { grid-template-columns: 1fr; gap: 32px; }
+    .hero { padding: 80px 0 130px; }
+    section { padding: 72px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="2" y="16" width="6" height="14" rx="1" fill="#4cc2ff"/>
+        <rect x="10" y="8" width="6" height="22" rx="1" fill="#7b8cff"/>
+        <rect x="18" y="12" width="6" height="18" rx="1" fill="#4cc2ff"/>
+        <rect x="26" y="4" width="4" height="26" rx="1" fill="#7b8cff"/>
+      </svg>
+      スカイライン・テクノロジーズ
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#services">事業内容</a></li>
+        <li><a href="#strengths">強み</a></li>
+        <li><a href="#works">実績</a></li>
+        <li><a href="#company">会社情報</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="btn" style="padding:8px 20px;font-size:14px">お問い合わせ</a>
+  </div>
+  <div class="news-bar">
+    <div class="wrap">
+      <span class="label">NEWS</span>
+      <ul id="news-list">
+        <li class="on"><time datetime="2026-10-20">2026.10.20</time><a href="#contact">2027年度 新卒・キャリア採用の募集を開始しました</a></li>
+        <li><time datetime="2026-10-06">2026.10.06</time><a href="#works">AI問診書類読み取りソリューションの提供を開始</a></li>
+        <li><time datetime="2026-09-15">2026.09.15</time><a href="#contact">「Skyline Tech Day 2026」を11月に開催します</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div class="eyebrow">SKYLINE TECHNOLOGIES</div>
+      <h1>空の高さから、<br><span>ビジネスの未来</span>を見渡す。</h1>
+      <p>クラウド、AI、モバイル。スカイライン・テクノロジーズは、確かな技術力と対話を重ねる開発スタイルで、企業のデジタル変革を最後まで伴走します。</p>
+      <div class="cta">
+        <a href="#contact" class="btn">無料で相談する</a>
+        <a href="#works" class="btn ghost">開発実績を見る</a>
+      </div>
+    </div>
+    <svg class="skyline" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="#0b1220" d="M0 120V80h40V50h50v40h40V30h60v60h40V60h50v30h60V20h50v70h40V55h60v35h50V40h60v50h40V65h50v25h60V35h50v55h40V70h60v20h50V45h50v45h40V60h60v60z"/>
+    </svg>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head"><small>SERVICES</small><h2>事業内容</h2></div>
+      <div class="grid c3">
+        <div class="card"><div class="icon">☁️</div><h3>クラウド・システム開発</h3><p>基幹システムからSaaSまで、スケーラブルで保守しやすい設計・開発・運用をワンストップで提供します。</p></div>
+        <div class="card"><div class="icon">🤖</div><h3>AI・データ活用</h3><p>需要予測、文書解析、業務自動化など、現場で成果が出るAIソリューションを企画から実装まで担当します。</p></div>
+        <div class="card"><div class="icon">📱</div><h3>モバイルアプリ開発</h3><p>iOS / Android のネイティブ・クロスプラットフォーム開発。使いやすいUI設計から公開後の改善まで支援します。</p></div>
+        <div class="card"><div class="icon">🛡️</div><h3>セキュリティ・品質保証</h3><p>脆弱性診断、自動テスト基盤の構築、CI/CD導入により、安心してリリースできる体制を整えます。</p></div>
+        <div class="card"><div class="icon">🧭</div><h3>DXコンサルティング</h3><p>現状分析からロードマップ策定まで、技術と事業の両面から最適な進め方をご提案します。</p></div>
+        <div class="card"><div class="icon">🤝</div><h3>開発チーム伴走支援</h3><p>内製化を目指す企業へ、エンジニアの参画・技術研修・開発プロセス改善で寄り添います。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="strengths" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><small>STRENGTHS</small><h2>スカイラインが選ばれる理由</h2></div>
+      <div class="stats">
+        <div><b>120+</b><span>累計プロジェクト数</span></div>
+        <div><b>98%</b><span>継続・リピート率</span></div>
+        <div><b>45名</b><span>在籍エンジニア</span></div>
+        <div><b>12年</b><span>創業からの歩み</span></div>
+      </div>
+      <div class="grid c3" style="margin-top:56px">
+        <div class="card"><h3>01. 顧客と同じ目線で</h3><p>要件を「聞くだけ」で終わらせず、事業目標から逆算して最適解を一緒に考えます。</p></div>
+        <div class="card"><h3>02. 小さく作り、早く磨く</h3><p>2週間単位のスプリントで動くものを見せ、フィードバックを素早く反映します。</p></div>
+        <div class="card"><h3>03. 作って終わりにしない</h3><p>リリース後の運用・改善まで責任を持ち、長期的に価値を育て続けます。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="works">
+    <div class="wrap">
+      <div class="sec-head"><small>WORKS</small><h2>開発実績</h2></div>
+      <div class="grid c3">
+        <div class="card work"><div class="thumb t1"></div><div class="body"><span class="tag">物流 / クラウド</span><h3>配送最適化プラットフォーム</h3><p>配送ルートをAIで自動算出し、配送コストを平均18%削減。</p></div></div>
+        <div class="card work"><div class="thumb t2"></div><div class="body"><span class="tag">小売 / モバイル</span><h3>会員アプリ「Hoshi Card」</h3><p>ポイント・クーポンを統合。リリース半年で会員数50万人を突破。</p></div></div>
+        <div class="card work"><div class="thumb t3"></div><div class="body"><span class="tag">医療 / AI</span><h3>問診書類の自動読み取り</h3><p>手書き書類のデータ化を自動化し、事務作業時間を約70%短縮。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="company" class="alt">
+    <div class="wrap">
+      <div class="sec-head"><small>COMPANY</small><h2>会社情報</h2></div>
+      <div class="about">
+        <div>
+          <p>スカイライン・テクノロジーズは、「技術で、見える景色を変える」をミッションに掲げるソフトウェア開発会社です。</p>
+          <p>高層ビルが立ち並ぶスカイラインのように、一つひとつの確かな仕事を積み上げ、お客様の事業とともに高みを目指します。</p>
+        </div>
+        <dl class="info">
+          <div><dt>会社名</dt><dd>株式会社スカイライン・テクノロジーズ</dd></div>
+          <div><dt>設立</dt><dd>2014年4月</dd></div>
+          <div><dt>代表者</dt><dd>代表取締役 青空 晴人</dd></div>
+          <div><dt>所在地</dt><dd>東京都千代田区空見町1-2-3 スカイタワー18F</dd></div>
+          <div><dt>従業員数</dt><dd>58名(2026年10月現在)</dd></div>
+          <div><dt>資本金</dt><dd>5,000万円</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <h2>まずは、お気軽にご相談ください</h2>
+        <p>プロジェクトのご相談、お見積り、採用に関するお問い合わせなど、お待ちしています。</p>
+        <a href="mailto:hello@skyline-tech.example" class="btn">hello@skyline-tech.example</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    © 2026 Skyline Technologies Inc.
+    <div class="note">※ 本サイトに掲載の会社・人物・実績はすべて架空のものです。</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var items = document.querySelectorAll('#news-list li');
+    if (items.length < 2 || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var i = 0;
+    setInterval(function () {
+      items[i].classList.remove('on');
+      i = (i + 1) % items.length;
+      items[i].classList.add('on');
+    }, 4000);
+  })();
+</script>
+</body>
+</html>
